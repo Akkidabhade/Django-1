@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+</head>
+<body>
+    <h1>Search Items</h1>
+    <form action="{% url 'search' %}" method="GET">
+        <label for="query">Search:</label>
+        <input type="text" id="query" name="query">
+        <button type="submit">Search</button>
+    </form>
+
+    {% if items %}
+        <h2>Search Results</h2>
+        <ul>
+            {% for item in items %}
+                <li>{{ item.name }} - Category: {{ item.category }} - Price: {{ item.price }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No items found matching your search.</p>
+    {% endif %}
+</body>
+</html>
